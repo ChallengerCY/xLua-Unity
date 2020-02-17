@@ -69,4 +69,20 @@ public class UnitySingleton<T> : MonoBehaviour where T : Component
             return _instance;
         }
     }
+
+    public virtual void Awake()
+    {
+        //将该单例模式设置为不受场景销毁影响
+        DontDestroyOnLoad(gameObject);
+        if (_instance == null)
+        {
+            _instance = this as T;
+        }
+        else
+        {
+            //确保单例只存在一份
+            Debug.LogWarning($"存在多个{typeof(T)}类型的单例,即将销毁{gameObject.name}");
+            Destroy(gameObject);
+        }
+    }
 }
