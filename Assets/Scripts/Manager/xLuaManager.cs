@@ -33,9 +33,28 @@ public class xLuaManager : UnitySingleton<xLuaManager>
     // Update is called once per frame
     void Update()
     {
-        
+        if (HasGameStart)
+        {
+            SafeDoString("main.Update()");
+        }
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (HasGameStart)
+        {
+            SafeDoString("main.FixedUpdate()");
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (HasGameStart)
+        {
+            SafeDoString("main.LateUpdate()");
+        }
+    }
+
     public void SafeDoString(string scriptContent) { // 执行脚本, scriptContent脚本代码的文本内容;
         if (_luaEnv != null) {
             try {
@@ -66,7 +85,7 @@ public class xLuaManager : UnitySingleton<xLuaManager>
         if (_luaEnv == null) 
             return;
         LoadScript(gameMainScriptName);
-       SafeDoString("main.start()");
+       SafeDoString("main.Start()");
         HasGameStart = true;
 
 

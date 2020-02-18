@@ -1,11 +1,34 @@
-print("=================")
+local game= require( "Game.Start");
 
-main={}
+main={};  -- 全局模块
 
-local function start()
-    print("game Start")
+local function Start()
+    print("game Start");
+    game.Init();
 end
 
-main.start=start
+local function OnApplicationQuit()
+    
+end
 
-return main
+local function Update()
+    print("Update")
+end
+
+
+local function FixedUpdate()
+    print("FixedUpdate")
+end
+
+local function LateUpdate()
+    print("LateUpdate")
+    
+end
+
+main.Start=Start;
+main.Update=Update;
+main.FixedUpdate=FixedUpdate;
+main.LateUpdate=LateUpdate;
+main.OnApplicationQuit=OnApplicationQuit;
+
+return main;
