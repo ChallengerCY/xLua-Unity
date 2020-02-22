@@ -10,7 +10,9 @@ public class GameLaunch : MonoBehaviour
     private void Awake()
     {
         gameObject.AddComponent<xLuaManager>();
+        
         xLuaManager.Instance.InitXLuaManager();
+        
     }
 
     void Start()

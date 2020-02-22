@@ -1,28 +1,40 @@
+
+require("Manager.LuaGameObject")
+--引入游戏启动逻辑
 local game= require( "Game.Start");
 
-main={};  -- 全局模块
+-- 全局模块
+main={};  
 
 local function Start()
     print("game Start");
+    
+    if(LuaGameObject==nil) then
+        print("Nil")
+    else
+        print("LuaGameObject is not nil")
+    end
+
     game.Init();
 end
 
-local function OnApplicationQuit()
-    
-end
+
+
 
 local function Update()
-    print("Update")
+    LuaGameObject.Update();
 end
 
-
 local function FixedUpdate()
-    print("FixedUpdate")
+   LuaGameObject.FixedUpdate();
 end
 
 local function LateUpdate()
-    print("LateUpdate")
-    
+   LuaGameObject.LateUpdate();
+end
+
+local function OnApplicationQuit()
+
 end
 
 main.Start=Start;
